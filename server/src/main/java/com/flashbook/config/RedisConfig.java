@@ -41,11 +41,44 @@ public class RedisConfig {
     @Bean(destroyMethod = "shutdown")
     public RedissonClient redissonClient() {
         Config config = new Config();
-        String protocol = ssl ? "rediss://" : "redis://";
-        String fullAddress = protocol + redisHost + ":" + redisPort;
-        log.info("Configuring RedissonClient with address: {} (ssl enabled: {})", fullAddress, ssl);
-        if (redisPassword != null && !redisPassword.trim().isEmpty()) {
-            log.info("Using Redis password authentication (length: {})", redisPassword.trim().length());
+
+        // Fallback to System.getenv() directly if Spring properties are not set or default
+        boolean isSsl = ssl || "true".equalsIgnoreCase(System.getenv("REDIS_SSL"));
+        
+        String host = redisHost;
+        if (host == null || host.equals("localhost")) {
+            String envHost = System.getenv("REDIS_HOST");
+            if (envHost != null && !envHost.trim().isEmpty()) {
+                host = envHost.trim();
+            }
+        }
+
+        int port = redisPort;
+        if (port == 6379) {
+            String envPort = System.getenv("REDIS_PORT");
+            if (envPort != null && !envPort.trim().isEmpty()) {
+                try {
+                    port = Integer.parseInt(envPort.trim());
+                } catch (NumberFormatException e) {
+                    log.warn("Invalid REDIS_PORT value: {}, falling back to 6379", envPort);
+                }
+            }
+        }
+
+        String password = redisPassword;
+        if (password == null || password.trim().isEmpty()) {
+            String envPassword = System.getenv("REDIS_PASSWORD");
+            if (envPassword != null && !envPassword.trim().isEmpty()) {
+                password = envPassword;
+            }
+        }
+
+        String protocol = isSsl ? "rediss://" : "redis://";
+        String fullAddress = protocol + host + ":" + port;
+        
+        log.info("Configuring RedissonClient with address: {} (ssl: {})", fullAddress, isSsl);
+        if (password != null && !password.trim().isEmpty()) {
+            log.info("Using Redis password authentication (length: {})", password.trim().length());
         } else {
             log.warn("No Redis password authentication configured!");
         }
@@ -53,8 +86,8 @@ public class RedisConfig {
         var serverConfig = config.useSingleServer()
                 .setAddress(fullAddress);
 
-        if (redisPassword != null && !redisPassword.trim().isEmpty()) {
-            serverConfig.setPassword(redisPassword.trim());
+        if (password != null && !password.trim().isEmpty()) {
+            serverConfig.setPassword(password.trim());
         }
         return Redisson.create(config);
     }
