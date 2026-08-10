@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Summary - FlashBook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#341100",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e5e2e1",
+                      "secondary-container": "#fd761a",
+                      "on-tertiary-fixed-variant": "#484645",
+                      "on-primary-container": "#858383",
+                      "surface-bright": "#fdf8f8",
+                      "surface": "#fdf8f8",
+                      "tertiary-container": "#1d1b1a",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "secondary": "#9d4300",
+                      "primary": "#000000",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#444748",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#ebe7e6",
+                      "primary-container": "#1c1b1b",
+                      "surface-dim": "#ddd9d8",
+                      "on-secondary-fixed-variant": "#783200",
+                      "surface-container": "#f1edec",
+                      "on-primary-fixed": "#1c1b1b",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f4f0ef",
+                      "inverse-surface": "#313030",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#1c1b1b",
+                      "primary-fixed": "#e5e2e1",
+                      "on-tertiary-container": "#868381",
+                      "outline-variant": "#c4c7c7",
+                      "on-primary-fixed-variant": "#474646",
+                      "secondary-fixed": "#ffdbca",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-fixed": "#e6e1df",
+                      "surface-container-low": "#f7f3f2",
+                      "tertiary": "#000000",
+                      "on-secondary-container": "#5c2400",
+                      "secondary-fixed-dim": "#ffb690",
+                      "background": "#fdf8f8",
+                      "on-background": "#1c1b1b",
+                      "inverse-primary": "#c8c6c5",
+                      "surface-tint": "#5f5e5e",
+                      "tertiary-fixed-dim": "#cac6c3",
+                      "on-tertiary-fixed": "#1d1b1a",
+                      "on-error": "#ffffff",
+                      "outline": "#747878"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "unit-sm": "8px",
+                      "unit-xl": "48px",
+                      "margin-mobile": "20px",
+                      "unit-lg": "24px",
+                      "container-max": "1280px",
+                      "unit-xs": "4px",
+                      "unit-md": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "display-hero": ["Plus Jakarta Sans"],
+                      "body-md": ["Inter"],
+                      "label-bold": ["Plus Jakarta Sans"],
+                      "body-lg": ["Inter"],
+                      "display-hero-mobile": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "500"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "display-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "label-bold": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "display-hero-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation (Hidden on transactional page as per instructions, but requested for continuity. Conflict resolution: Request explicitly asks to show profile. Showing simplified nav) -->
+<nav class="bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full mx-auto">
+<div class="font-headline-md text-headline-md font-black text-primary">FlashBook</div>
+<div class="flex items-center gap-unit-md">
+<span class="font-label-bold text-label-bold text-on-surface-variant hidden md:block">Alex Reed</span>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up, highly detailed portrait of a young professional with a warm smile, suitable for a user profile avatar. Bright, clean lighting, white background, high-end SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjjVV5RBfIFhKIAp6Wnta3vlsuPhL0oaXe8M02bkq5apnOaDYRUkOtmbIYf57SAAlfwXR191sfyui6o_LW7hQklbAlrpJt0Ks7CFz7XTRPPwbFkOo2TOY8ariHuCDqwA2lzaDKuCFbuPcmtcooIGbkd-zCWdrNFkQeKQQv6ClBq8Lz0rR111vwHusoxos1KJvoNFm3A2v8wDNBkMuxbAM5Mucv42azl5sXdMp1dYlfajSSHDs7lL7OEg"/>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center pt-unit-xl pb-unit-xl px-margin-mobile w-full">
+<div class="w-full max-w-[600px] flex flex-col items-center">
+<!-- Header Section -->
+<div class="text-center mb-unit-lg">
+<h1 class="font-headline-md text-headline-md text-primary mb-unit-xs">Review your booking</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Complete payment within the time shown to keep your seats.</p>
+</div>
+<!-- Countdown Pill -->
+<div class="flex items-center justify-center gap-unit-sm border border-secondary text-secondary rounded-full px-unit-md py-unit-xs mb-unit-xl bg-surface">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-label-bold text-label-bold">Seats held — <span id="countdown">09:59</span> remaining</span>
+</div>
+<!-- Summary Card -->
+<div class="w-full bg-surface-container-lowest rounded-2xl border border-outline-variant soft-shadow mb-unit-lg overflow-hidden">
+<!-- Card Header -->
+<div class="p-unit-lg border-b border-outline-variant bg-surface-container-low flex gap-unit-md items-center">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 hidden sm:block">
+<img alt="Event Image" class="w-full h-full object-cover" data-alt="A vibrant, abstract digital representation of a night music festival. Bright neon pink and orange lights glowing against a dark background, creating a high-energy, premium event aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhFxG_fo5wMextHAxSYb3u4cWyjtq_VgSaFPlFIbGYrQTk1TKeXw23tfrvPXy3LEYxYXH92PXMXQ5bmGcZ5tMNfzq5_0VyerXZvztlwpI3UNqpBjTg4aOAa7e6cjjOk0U58sCCg2rqmsc2BSkE-gnEX9iWmaKSjcWu7ODVlJdUWHBrGsn-s3oHP6SkK2KYXCCcc5Q1XrdMvvLzQybhYX34aYAxvidFlW36tT_cfFixyC9RIT28NVLcBw"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary text-[24px]">Neon Nights Festival</h2>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-unit-xs mt-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            Oct 24, 7:00 PM
+                        </p>
+</div>
+</div>
+<!-- Seat Details -->
+<div class="p-unit-lg border-b border-outline-variant flex flex-col gap-unit-sm">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface">Seat C1 (VIP)</span>
+<span class="font-body-md text-body-md text-primary">₹2,499</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface">Seat C2 (VIP)</span>
+<span class="font-body-md text-body-md text-primary">₹2,499</span>
+</div>
+<div class="flex justify-between items-center pt-unit-sm mt-unit-sm border-t border-outline-variant border-dashed">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Subtotal</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">₹4,998</span>
+</div>
+</div>
+<!-- Promo Code -->
+<div class="p-unit-lg border-b border-outline-variant">
+<label class="font-label-bold text-label-bold text-on-surface block mb-unit-sm" for="promo">Promo Code</label>
+<div class="flex gap-unit-sm">
+<input class="flex-grow rounded-xl border-outline-variant bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-primary px-unit-md py-[10px] font-body-md text-body-md" id="promo" placeholder="Enter code" type="text"/>
+<button class="bg-primary text-on-primary rounded-full px-unit-lg font-label-bold text-label-bold hover:bg-tertiary-container transition-colors">Apply</button>
+</div>
+</div>
+<!-- Total -->
+<div class="p-unit-lg flex justify-between items-center bg-surface-container-low">
+<span class="font-headline-md text-headline-md text-primary text-[24px]">Total</span>
+<span class="font-headline-md text-headline-md text-primary text-[28px]">₹4,998</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-unit-md mb-unit-lg">
+<button class="w-full bg-primary text-on-primary rounded-full py-[16px] font-label-bold text-[16px] hover:bg-tertiary-container transition-colors shadow-sm">
+                    Proceed to Payment
+                </button>
+<button class="w-full bg-surface-container-lowest text-on-surface border border-outline rounded-full py-[12px] font-label-bold text-[14px] hover:bg-surface-container-low transition-colors">
+                    Cancel Booking
+                </button>
+</div>
+<!-- Reassurance Row -->
+<div class="flex flex-wrap justify-center gap-x-unit-lg gap-y-unit-sm text-on-surface-variant w-full">
+<div class="flex items-center gap-unit-xs">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-sm text-label-sm">Secure payment</span>
+</div>
+<div class="flex items-center gap-unit-xs">
+<span class="material-symbols-outlined text-[16px]">confirmation_number</span>
+<span class="font-label-sm text-label-sm">Instant e-ticket</span>
+</div>
+<div class="flex items-center gap-unit-xs">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+<span class="font-label-sm text-label-sm">Free cancellation before payment</span>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple countdown logic for visual effect
+        let time = 9 * 60 + 59;
+        const countdownEl = document.getElementById('countdown');
+        
+        setInterval(() => {
+            if(time <= 0) return;
+            time--;
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            countdownEl.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }, 1000);
+    </script>
+</body></html>

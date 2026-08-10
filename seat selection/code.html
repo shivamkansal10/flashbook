@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlashBook - Seat Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#858383",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-secondary-container": "#5c2400",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container-low": "#f7f3f2",
+                        "secondary-container": "#fd761a",
+                        "on-secondary-fixed": "#341100",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#1d1b1a",
+                        "outline-variant": "#c4c7c7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed-variant": "#484645",
+                        "surface-tint": "#5f5e5e",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#ebe7e6",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#783200",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "background": "#fdf8f8",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary-fixed": "#ffdbca",
+                        "surface": "#fdf8f8",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary-container": "#868381",
+                        "outline": "#747878",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#1d1b1a",
+                        "tertiary-fixed-dim": "#cac6c3",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#9d4300",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1c1b1b",
+                        "inverse-primary": "#c8c6c5",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e6e1df",
+                        "surface-dim": "#ddd9d8",
+                        "surface-variant": "#e5e2e1",
+                        "primary": "#000000",
+                        "surface-container": "#f1edec",
+                        "on-surface-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-xl": "48px",
+                        "margin-desktop": "64px",
+                        "unit-md": "16px",
+                        "container-max": "1280px",
+                        "unit-sm": "8px",
+                        "margin-mobile": "20px",
+                        "unit-xs": "4px",
+                        "gutter": "24px",
+                        "unit-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "display-hero-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-hero": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "display-hero-mobile": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-hero": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation (Generated from JSON) -->
+<nav class="bg-surface fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-unit-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">EventPass</span>
+<div class="hidden md:flex gap-unit-md ml-unit-lg">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors py-unit-sm px-unit-xs" href="#">Events</a>
+<a class="text-secondary border-b-2 border-secondary font-body-md text-body-md py-unit-sm px-unit-xs" href="#">Venues</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors py-unit-sm px-unit-xs" href="#">Schedule</a>
+</div>
+</div>
+<div class="flex items-center gap-unit-md">
+<!-- Event Info (Requested in prompt) -->
+<div class="hidden md:flex items-center gap-unit-sm mr-unit-lg text-on-surface-variant font-label-sm text-label-sm">
+<span>Neon Nights Festival | Oct 24, 7:00 PM</span>
+</div>
+<!-- Timer (Trailing primary action) -->
+<div class="flex items-center gap-unit-xs border border-secondary text-secondary rounded-full px-unit-md py-unit-xs font-label-bold text-label-bold">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Timer: 04:58</span>
+</div>
+<!-- User Icons -->
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="text-primary">
+<span class="material-symbols-outlined fill">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Side Navigation Shell (Generated from JSON) -->
+<aside class="hidden md:flex flex-col bg-surface fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-outline-variant p-unit-md gap-unit-sm">
+<div class="mb-unit-lg">
+<div class="font-headline-md text-headline-md text-primary mb-unit-xs">Booking Portal</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Premium Seating</div>
+</div>
+<nav class="flex flex-col gap-unit-xs flex-grow font-label-bold text-label-bold">
+<a class="flex items-center gap-unit-sm p-unit-sm bg-secondary-container text-on-secondary-container rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">event_seat</span>
+                Selection
+            </a>
+<a class="flex items-center gap-unit-sm p-unit-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">payments</span>
+                Pricing
+            </a>
+<a class="flex items-center gap-unit-sm p-unit-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">accessible</span>
+                Accessibility
+            </a>
+<a class="flex items-center gap-unit-sm p-unit-sm text-on-surface-variant hover:bg-surface-container-high rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                Support
+            </a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-unit-sm px-unit-md border border-outline rounded-full font-label-bold text-label-bold text-primary hover:bg-surface-container-high transition-colors flex justify-center items-center gap-unit-xs">
+                Help Center
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] md:pl-[256px] min-h-screen px-margin-mobile md:px-margin-desktop pb-margin-desktop w-full max-w-container-max mx-auto flex flex-col lg:flex-row gap-gutter">
+<!-- Left Column: Seat Grid -->
+<div class="flex-1 flex flex-col gap-unit-md w-full">
+<!-- Error Banner -->
+<div class="bg-error-container text-on-error-container p-unit-md rounded-2xl flex items-center gap-unit-sm font-label-bold text-label-bold">
+<span class="material-symbols-outlined">error</span>
+<span>Sorry, seat A4 was just taken</span>
+<button class="ml-auto text-on-error-container opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Legend -->
+<div class="flex flex-wrap items-center gap-unit-md mb-unit-sm font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-unit-xs">
+<div class="w-4 h-4 rounded-sm bg-primary text-on-primary border border-primary"></div>
+<span>Selected</span>
+</div>
+<div class="flex items-center gap-unit-xs">
+<div class="w-4 h-4 rounded-sm bg-surface-container-lowest border border-outline-variant"></div>
+<span>Available</span>
+</div>
+<div class="flex items-center gap-unit-xs">
+<div class="w-4 h-4 rounded-sm bg-surface-container-high border border-outline-variant opacity-50"></div>
+<span>Sold</span>
+</div>
+<div class="flex items-center gap-unit-xs">
+<div class="w-4 h-4 rounded-sm bg-surface-container-lowest border-2 border-secondary-container"></div>
+<span>Held by others</span>
+</div>
+</div>
+<!-- Stage Visualization -->
+<div class="w-full bg-surface-container-highest h-2 rounded-t-[50%] mt-unit-md mb-unit-lg shadow-sm border border-outline-variant flex items-center justify-center relative">
+<span class="absolute top-4 text-on-surface-variant font-label-sm text-label-sm tracking-widest uppercase">Stage</span>
+</div>
+<!-- Seat Grid Container -->
+<div class="bg-surface-container-lowest p-unit-lg rounded-2xl border border-outline-variant shadow-sm overflow-x-auto w-full flex flex-col items-center gap-unit-sm mt-unit-lg">
+<!-- Row A -->
+<div class="flex items-center gap-unit-xs">
+<span class="w-6 text-center font-label-bold text-label-bold text-on-surface-variant mr-unit-sm">A</span>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">1</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">2</button>
+<div class="w-unit-md"></div> <!-- Aisle -->
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">3</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-bold text-label-bold opacity-50 cursor-not-allowed flex items-center justify-center">4</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-bold text-label-bold opacity-50 cursor-not-allowed flex items-center justify-center">5</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">6</button>
+<div class="w-unit-md"></div> <!-- Aisle -->
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">7</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">8</button>
+</div>
+<!-- Row B -->
+<div class="flex items-center gap-unit-xs">
+<span class="w-6 text-center font-label-bold text-label-bold text-on-surface-variant mr-unit-sm">B</span>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border-2 border-secondary-container text-on-surface font-label-bold text-label-bold cursor-not-allowed flex items-center justify-center">1</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border-2 border-secondary-container text-on-surface font-label-bold text-label-bold cursor-not-allowed flex items-center justify-center">2</button>
+<div class="w-unit-md"></div> <!-- Aisle -->
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">3</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">4</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">5</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-bold text-label-bold opacity-50 cursor-not-allowed flex items-center justify-center">6</button>
+<div class="w-unit-md"></div> <!-- Aisle -->
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">7</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">8</button>
+</div>
+<!-- Row C -->
+<div class="flex items-center gap-unit-xs">
+<span class="w-6 text-center font-label-bold text-label-bold text-on-surface-variant mr-unit-sm">C</span>
+<button class="w-10 h-10 rounded-lg bg-primary border border-primary text-on-primary font-label-bold text-label-bold shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05)] transition-colors flex items-center justify-center">1</button>
+<button class="w-10 h-10 rounded-lg bg-primary border border-primary text-on-primary font-label-bold text-label-bold shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05)] transition-colors flex items-center justify-center">2</button>
+<div class="w-unit-md"></div> <!-- Aisle -->
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">3</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">4</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-bold text-label-bold opacity-50 cursor-not-allowed flex items-center justify-center">5</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant text-on-surface-variant font-label-bold text-label-bold opacity-50 cursor-not-allowed flex items-center justify-center">6</button>
+<div class="w-unit-md"></div> <!-- Aisle -->
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">7</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface font-label-bold text-label-bold hover:border-primary transition-colors flex items-center justify-center">8</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Sticky Summary Card -->
+<div class="w-full lg:w-[320px] flex-shrink-0">
+<div class="bg-surface-container-lowest p-unit-md rounded-2xl border border-outline-variant shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05)] sticky top-[80px]">
+<h2 class="font-headline-md text-[20px] leading-tight font-bold text-primary mb-unit-md pb-unit-sm border-b border-outline-variant">Your Selection</h2>
+<div class="flex flex-col gap-unit-sm mb-unit-md font-body-md text-body-md">
+<div class="flex justify-between items-center group">
+<span class="text-on-surface font-medium">C1 — ₹2,499</span>
+<button class="text-on-surface-variant hover:text-error transition-colors p-unit-xs rounded-full hover:bg-error-container opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="flex justify-between items-center group">
+<span class="text-on-surface font-medium">C2 — ₹2,499</span>
+<button class="text-on-surface-variant hover:text-error transition-colors p-unit-xs rounded-full hover:bg-error-container opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center font-label-bold text-label-bold text-primary pt-unit-sm border-t border-outline-variant mb-unit-md">
+<span>Total</span>
+<span>₹4,998</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-unit-sm px-unit-md rounded-full font-label-bold text-label-bold hover:opacity-90 transition-opacity flex justify-center items-center gap-unit-xs mb-unit-sm">
+                    Reserve Seats
+                </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant">
+                    Seats are held for 5 minutes once reserved.
+                </p>
+</div>
+</div>
+</main>
+</body></html>

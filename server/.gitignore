@@ -1,0 +1,11 @@
+# Never commit real secrets
+.env
+*.env
+
+# Maven build output
+target/
+
+# IDE
+.idea/
+*.iml
+.vscode/settings.json
