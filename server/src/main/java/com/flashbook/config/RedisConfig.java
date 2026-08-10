@@ -23,7 +23,7 @@ public class RedisConfig {
     @Value("${spring.redis.password:}")
     private String redisPassword;
 
-    @Value("${spring.redis.ssl.enabled:false}")
+    @Value("${REDIS_SSL:false}")
     private boolean ssl;
 
     @Bean
@@ -42,8 +42,16 @@ public class RedisConfig {
     public RedissonClient redissonClient() {
         Config config = new Config();
         String protocol = ssl ? "rediss://" : "redis://";
+        String fullAddress = protocol + redisHost + ":" + redisPort;
+        log.info("Configuring RedissonClient with address: {} (ssl enabled: {})", fullAddress, ssl);
+        if (redisPassword != null && !redisPassword.trim().isEmpty()) {
+            log.info("Using Redis password authentication (length: {})", redisPassword.trim().length());
+        } else {
+            log.warn("No Redis password authentication configured!");
+        }
+
         var serverConfig = config.useSingleServer()
-                .setAddress(protocol + redisHost + ":" + redisPort);
+                .setAddress(fullAddress);
 
         if (redisPassword != null && !redisPassword.trim().isEmpty()) {
             serverConfig.setPassword(redisPassword.trim());
