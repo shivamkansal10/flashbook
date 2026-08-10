@@ -20,6 +20,12 @@ public class RedisConfig {
     @Value("${spring.redis.port:6379}")
     private int redisPort;
 
+    @Value("${spring.redis.password:}")
+    private String redisPassword;
+
+    @Value("${spring.redis.ssl.enabled:false}")
+    private boolean ssl;
+
     @Bean
     public CommandLineRunner enableKeyspaceNotifications(StringRedisTemplate redisTemplate) {
         return args -> {
@@ -35,8 +41,13 @@ public class RedisConfig {
     @Bean(destroyMethod = "shutdown")
     public RedissonClient redissonClient() {
         Config config = new Config();
-        config.useSingleServer()
-                .setAddress("redis://" + redisHost + ":" + redisPort);
+        String protocol = ssl ? "rediss://" : "redis://";
+        var serverConfig = config.useSingleServer()
+                .setAddress(protocol + redisHost + ":" + redisPort);
+
+        if (redisPassword != null && !redisPassword.trim().isEmpty()) {
+            serverConfig.setPassword(redisPassword.trim());
+        }
         return Redisson.create(config);
     }
 
