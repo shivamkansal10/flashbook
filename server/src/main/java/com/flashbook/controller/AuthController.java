@@ -38,4 +38,12 @@ public class AuthController {
         MessageResponse response = authService.resetPassword(request);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/health")
+    public ResponseEntity<java.util.Map<String, String>> health() {
+        java.util.Map<String, String> status = new java.util.HashMap<>();
+        status.put("status", "UP");
+        status.put("service", "flashbook-backend");
+        return ResponseEntity.ok(status);
+    }
 }
